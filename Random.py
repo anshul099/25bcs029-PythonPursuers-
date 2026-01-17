@@ -1,23 +1,40 @@
 import random
 
-numCorrect = random.randint(1, 10) 
-#Computer randomly selects a number between 1 and 10
-print(numCorrect)
-print('The Computer has chosen a random number between 1 and 10!')
-print('You have 3 tries!! Guess the number~')
-numUser = int(input('Enter your guess: '))
-#Taking user input
+def game() :
+    numCorrect = random.randint(1, 10) 
+    #Computer randomly selects a number between 1 and 10
 
-for guess in range (1, 4) :
-    if numUser == numCorrect :
-        print('You guessed Correct!!')
-        break
-        #If user guesses correctly, loop stops
-    else :
-        print('Wrong guess,', guess , 'try used.')
-        if guess == 3 :
-            print('You failed.... The correct number was', numCorrect)
-            #When the user uses all 3 tries, the correct number is revealed
+    #--------Test-----------
+    #print(numCorrect)
+    #-----------------------
+
+    print('The Computer has chosen a random number between 1 and 10!')
+    print('You have 3 tries!! Guess the number~')
+
+    guess = 1
+    while 1 <= guess <=3 :
+        #Error Handling
+        try :
+            numUser = int(input('Enter your guess: '))
+            if numUser < 1 or numUser >10 :
+                raise ValueError
+        except ValueError :
+            print('!INVALID INPUT! Please enter an integer between 1 and 10')
+            continue
+   
+        if numUser == numCorrect :
+            print('You guessed Correct!!')
+            break
+            #If user guesses correctly, loop stops
         else :
-            numUser = int(input('Try again: '))
+            print('Wrong guess,', guess , 'try used.')
+            if guess == 3 :
+                print('You failed.... The correct number was', numCorrect)
+                #When the user uses all 3 tries, the correct number is revealed
+             
+            else :
+                print('Try Again..')
+                guess += 1
+            
+game()
         
