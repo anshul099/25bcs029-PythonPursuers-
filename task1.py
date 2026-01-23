@@ -1,6 +1,6 @@
 import numpy as np
 
-# Marks of students as an array
+# Marks of students as array
 marks = np.array([45, 78, 92, 60, 55])
 print(f"Marks of students: {marks}")
 
